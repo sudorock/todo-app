@@ -1,0 +1,9 @@
+;; shadow-cljs configuration
+{:source-paths ["src"]
+ :dependencies [[cider/cider-nrepl "0.21.0"]
+                [reagent "0.9.0-rc3"]]
+ :dev-http {8080 "public/"}
+ :builds { :app {:output-dir "public/"
+                 :asset-path "."
+                 :target :browser
+                 :modules {:main {:init-fn todo-app.todo/init}}}}}
