@@ -6,4 +6,4 @@
  :builds { :app {:output-dir "public/"
                  :asset-path "."
                  :target :browser
-                 :modules {:main {:init-fn todo-app.todo/init}}}}}
+                 :modules {:main {:init-fn todo-app.todo/mount-root}}}}}
