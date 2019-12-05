@@ -1,7 +1,8 @@
 ;; shadow-cljs configuration
 {:source-paths ["src"]
  :dependencies [[cider/cider-nrepl "0.21.0"]
-                [reagent "0.9.0-rc3"]]
+                [reagent "0.9.0-rc3"]
+                [garden "1.3.9"]]
  :dev-http {8080 "public/"}
  :builds { :app {:output-dir "public/"
                  :asset-path "."

@@ -1,0 +1,59 @@
+.app {
+	margin: 50px auto auto auto;
+	width: 600px;
+	border: solid 2px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+#title {
+	align-self: center;
+}
+
+.input-form {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	margin-bottom: 10px;
+}
+
+.todo-input {
+	grid-column: 1 / 2;
+	height: 40px;
+	margin-right: 5px;
+}
+
+.add-btn {
+	grid-column: 2 / 3;
+	margin-left: 5px;
+}
+
+.todo-item {
+	display: grid;
+	grid-template-columns: 7% auto minmax(25%, max-content);
+	height: 30px;
+	margin: 10px auto;
+}
+
+.td-itm-check-btn {
+	grid-column: 1 / 2;
+}
+
+.td-itm-due-date {
+	margin-left: 5px;
+}
+
+.td-itm-text {
+	grid-column: 2 / 3;
+}
+
+.td-itm-actions {
+	grid-column: 3 / 4;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.act-btn {
+	height: 30px;
+	margin-left: 7px;
+}
