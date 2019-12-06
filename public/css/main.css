@@ -2,20 +2,30 @@
 	font-family: 'Lato';
 }
 
+body {
+	background: #f8f8f8;
+}
+
 button {
 	border-radius: 5px;
+	color: white;
+	border: none;
 }
 .app {
 	margin: 50px auto auto auto;
 	width: 50%;
-	border: solid 2px;
+	border: solid 2px darkgray;
+	border-radius: 7px;
 	padding: 1% 2%;
 	display: flex;
 	flex-direction: column;
+	background: #fff;
 }
 
 #title {
 	align-self: center;
+	margin-bottom: 35px;
+	color: #484848;
 }
 
 .input-form {
@@ -25,18 +35,22 @@ button {
 }
 
 .todo-input {
+	border: 1px solid darkgray;
 	grid-column: 1 / 2;
 	height: 50px;
 	padding-left: 10px;
 	font-size: 1.3rem;
 	border-radius: 5px;
 	background-color: aliceblue;
+	box-shadow: none;
 }
 
 .add-btn {
 	grid-column: 2 / 3;
 	margin-left: 10px;
 	font-size: 0.9rem;
+	background-color: #0275d8;
+	color: white;
 }
 
 .td-itm-container {
@@ -87,7 +101,9 @@ button {
 	margin-left: 7px;
 	font-size: 20px;
 	height: 40px;
-	width: 40px;
+	width: max-content;
+	min-width: 40px;
+	color: white;
 }
 
 .td-itm-edit-form {
@@ -102,6 +118,7 @@ button {
 	font-size: 22px;
 	padding-left: 7px;
 	border-radius: 5px;
+	border: 1px solid darkgray;
 	background-color: aliceblue;
 }
 
@@ -118,4 +135,90 @@ button {
 	font-size: 20px;
 	width: 50%;
 	height: 100%;
+}
+
+.btn-container {
+	position: relative;
+}
+
+/* .date-btn {
+	width: ;
+} */
+
+.td-itm-date-form {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	right: 0px;
+	top: 130%;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	z-index: 100;
+}
+
+.td-itm-note-form {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	right: 0px;
+	top: 130%;
+	padding: 10px;
+	border: 1px solid darkgray;
+	background-color: white;
+	border-radius: 5px;
+	z-index: 100;
+}
+
+.td-date-input {
+	height: 30px;
+}
+
+.dialog-btn {
+	height: 30px;
+	width: 30px;
+	font-size: 15px;
+	margin-left: 5px;
+	color: white;
+}
+
+.td-itm-note-act-btns {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 7px;
+}
+
+.note-txt-area {
+	height: 150px;
+	width: 200px;
+	font-size: 18px;
+}
+
+.cancel {
+	background-color: #d9534f;
+}
+
+.ok {
+	background-color: #5cb85c;
+}
+
+.edit {
+	background-color: #5bc0de;
+}
+
+.delete {
+	background-color: #d9534f;
+}
+
+.note {
+	background-color: #f0ad4e;
+}
+
+.date {
+	background-color: #5cb85c;
 }

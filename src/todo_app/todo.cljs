@@ -35,38 +35,43 @@
            (if done [:i.far.fa-check-circle.done] [:i.far.fa-circle.not-done])]
           [:span.td-itm-text text]
           [:div.td-itm-actions
-           [:button.act-btn {:on-click (fn [e] (swap! show-date-input not))} 
-            [:i.far.fa-clock]
-            (when (not-empty due-date) [:span.td-itm-due-date due-date])]
-           [:button.act-btn {:on-click (fn [e] (swap! show-notes-input not))} [:i.far.fa-sticky-note]]
-           [:button.act-btn {:on-click (fn [e] (reset! is-editing true))} [:i.far.fa-edit]]
-           [:button.act-btn {:on-click (fn [e] (swap! todos dissoc id))} [:i.far.fa-trash-alt]]]
-          (when @show-date-input
-            [:form
-             [:input {:type "date" :value @edit-date :on-change #(reset! edit-date (-> % .-target .-value))}]
-             [:button {:on-click (fn [e]
-                                   (.preventDefault e)
-                                   (swap! todos assoc-in [id :due-date] @edit-date)
-                                   (reset! show-date-input false))} [:i.fas.fa-check]]
-             [:button {:on-click (fn [e] (.preventDefault e) (reset! show-date-input false))} [:i.fas.fa-times]]])
-          (when @show-notes-input
-            [:form.note-input
-             [:textarea {:value @edit-notes :form "note-input" :on-change #(reset! edit-notes (-> % .-target .-value))} ]
-             [:button {:on-click (fn [e]
-                                   (.preventDefault e)
-                                   (swap! todos assoc-in [id :notes] @edit-notes)
-                                   (reset! show-notes-input false))} [:i.fas.fa-check]]
-             [:button {:on-click (fn [e] (.preventDefault e) (reset! show-notes-input false))} [:i.fas.fa-times]]])]
+           [:div.btn-container
+            [:button.act-btn.date {:on-click (fn [e] (swap! show-date-input not))}
+             [:i.far.fa-clock]
+             (when (not-empty due-date) [:span.td-itm-due-date due-date])]
+            (when @show-date-input
+              [:form.td-itm-date-form
+               [:input.td-date-input {:type "date"
+                                      :value @edit-date
+                                      :on-change #(reset! edit-date (-> % .-target .-value))}]
+               [:button.dialog-btn.ok {:on-click (fn [e]
+                                     (.preventDefault e)
+                                     (swap! todos assoc-in [id :due-date] @edit-date)
+                                     (reset! show-date-input false))} [:i.fas.fa-check]]
+               [:button.dialog-btn.cancel {:on-click (fn [e] (.preventDefault e) (reset! show-date-input false))} [:i.fas.fa-times]]])]
+           [:div.btn-container
+            [:button.act-btn.note {:on-click (fn [e] (swap! show-notes-input not))} [:i.far.fa-sticky-note]]
+            (when @show-notes-input
+              [:form.td-itm-note-form
+               [:textarea.note-txt-area {:value @edit-notes :form "note-input" :on-change #(reset! edit-notes (-> % .-target .-value))}]
+               [:div.td-itm-note-act-btns
+                [:button.dialog-btn.ok {:on-click (fn [e]
+                                      (.preventDefault e)
+                                      (swap! todos assoc-in [id :notes] @edit-notes)
+                                      (reset! show-notes-input false))} [:i.fas.fa-check]]
+                [:button.dialog-btn.cancel {:on-click (fn [e] (.preventDefault e) (reset! show-notes-input false))} [:i.fas.fa-times]]]])]
+           [:button.act-btn.edit {:on-click (fn [e] (reset! is-editing true))} [:i.far.fa-edit]]
+           [:button.act-btn.delete {:on-click (fn [e] (swap! todos dissoc id))} [:i.far.fa-trash-alt]]]]
          [:div.todo-item-editing
           [:form.td-itm-edit-form
            [:input.td-itm-edit-input 
             {:type "text" :value @edit-input :on-change #(reset! edit-input (-> % .-target .-value))}]
            [:div.td-itm-edit-actions
-            [:button.td-itm-editing-act-btn {:on-click (fn [e]
+            [:button.td-itm-editing-act-btn.ok {:on-click (fn [e]
                                   (.preventDefault e)
                                   (reset! is-editing false)
                                   (swap! todos assoc-in [id :text] @edit-input))} [:i.fas.fa-check]]
-            [:button.td-itm-editing-act-btn {:on-click (fn [e] (.preventDefault e) (reset! is-editing false))} [:i.fas.fa-times]]]]])])))
+            [:button.td-itm-editing-act-btn.cancel {:on-click (fn [e] (.preventDefault e) (reset! is-editing false))} [:i.fas.fa-times]]]]])])))
 
 (defn todo-app []
   [:div.app
