@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "shadow-cljs": "2.8.77"
   },
   "dependencies": {

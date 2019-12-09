@@ -1,5 +1,5 @@
 * {
-	font-family: 'Lato';
+	font-family: 'Lato', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -11,6 +11,7 @@ button {
 	color: white;
 	border: none;
 }
+
 .app {
 	margin: 50px auto auto auto;
 	width: 50%;
@@ -55,12 +56,13 @@ button {
 
 .td-itm-container {
 	border-top: solid lightgray 1px;
+	height: 50px;
+	padding: 15px 0px 10px 0px;
 }
+
 .todo-item {
 	display: grid;
 	grid-template-columns: 5% auto minmax(max-content, 25%);
-	height: 50px;
-	margin: 10px auto;
 }
 
 .td-itm-check {
@@ -80,7 +82,8 @@ button {
 }
 
 .td-itm-due-date {
-	margin-left: 5px;
+	margin-left: 7px;
+	font-size: 17px;
 }
 
 .td-itm-text {
@@ -109,8 +112,7 @@ button {
 .td-itm-edit-form {
 	display: grid;
 	grid-template-columns: 85% 15%;
-	height: 50px;
-	margin: 10px auto;
+	height: 100%;
 }
 
 .td-itm-edit-input {
@@ -119,7 +121,7 @@ button {
 	padding-left: 7px;
 	border-radius: 5px;
 	border: 1px solid darkgray;
-	background-color: aliceblue;
+	background-color: rgb(250, 250, 250);
 }
 
 .td-itm-edit-actions {
@@ -140,10 +142,6 @@ button {
 .btn-container {
 	position: relative;
 }
-
-/* .date-btn {
-	width: ;
-} */
 
 .td-itm-date-form {
 	position: absolute;
@@ -221,4 +219,7 @@ button {
 
 .date {
 	background-color: #5cb85c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
