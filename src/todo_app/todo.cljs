@@ -6,7 +6,7 @@
 
 (defn delete-todo [id]
   (swap! todos dissoc id)
-  (-> (.fetch js/window "http://localhost/delete" (clj->js {:method "POST"})) 
+  (-> (.fetch js/window "http://localhost/todos" (clj->js {:method "DELETE"})) 
       (.then #(js/console.dir %)) 
       (.catch "hello")))
 
@@ -14,7 +14,7 @@
   (if (and (= key :text) (empty? val))
     (delete-todo id)
     (do (swap! todos assoc-in [id key] val)
-        (-> (.fetch js/window "http://localhost/update" (clj->js {:method "POST"}))
+        (-> (.fetch js/window "http://localhost/todos" (clj->js {:method "PUT"}))
             (.then #(js/console.dir %))
             (.catch "hello")))))
 
@@ -22,7 +22,7 @@
   (when (not-empty text)
     (let [id (swap! counter inc)]
       (swap! todos assoc id {:id id :text text :done false :note "" :due-date ""})
-      (-> (.fetch js/window "http://localhost/add" (clj->js {:method "POST"}))
+      (-> (.fetch js/window "http://localhost/todos" (clj->js {:method "POST"}))
           (.then #(js/console.dir %))
           (.catch "hello")))))
 
